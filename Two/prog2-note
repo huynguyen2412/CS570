@@ -1,0 +1,4 @@
+p2 interpret the first word as name of an executable file
+the shell must be able to handle redirection of I/O using the words "<", ">", "|"
+Eg: cat somefile > myexistingfile will NOT fork if the file existed
+stderr: myexistingfile: File exists

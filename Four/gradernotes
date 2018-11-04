@@ -1,0 +1,17 @@
+I wrote this code myself,
+
+I refered the blocks of code from the lectures such as dir(), pipe(), fork2.c, wait(), dup2(), stat(). I followed the structure in the program 4's notes. 
+Most of my codes are based on the things I learned from the lecture notes. 
+
+The problem I have that I couldn't implement a multiple pipe with the loop. I stuck on hooking pipes inside the loop.
+I tried many ways to make it works but it seems I got something wrong with the file descriptor in the loop.
+
+I wrote the pipe subroutine that handles the specific number of pipe for the input files.
+
+The references I used :
+http://man7.org/linux/
+https://www.tutorialspoint.com/
+http://pubs.opengroup.org/onlinepubs/009695399/functions/exec.html
+
+
+

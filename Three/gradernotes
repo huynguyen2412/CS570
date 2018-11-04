@@ -1,0 +1,23 @@
+I believe everything works perfectly under all conditions.
+I wrote the p3helper.c code myself.
+
+The algorithm is explained as:
+
+There are 4 locks to use for the program.
+In the "priority" case, the execute_lock and reader_lock are used.
+In the "fairness" case, the execute_lock and getline_lock are used.
+
+The execute_lock is the lock when the reader or the writer enter to the database.
+The reader_lock is used when a writer is in the database.(Priority case).
+The getline_lock is also used when a writer is in the database.(Fairness case).
+
+"Priority" case:
+In this case, when a writer comes, it will get the reader_lock, so the readers after its have to wait for the reader_lock. Those readers can't access to database. When the writer is not 0, the writers after its jump next to it and wait to get the reader_lock and the execution_lock. If there is last writer, ,it will return the reader_lock. So the next readers can get it and go to the database.
+Otherwise, if there is no writer, a reader just get the execute_lock to enter the database and release for the readers after its
+
+
+"Fairness" case:
+In this case, if the writer get in line, it will take the getline_lock. The readers have to wait to get the getline_lock. When a reader is able to get the getline_lock and access to database, the readers after its don't need to wait to get access to database. 
+The deadlock occurs in this case is if the writer_count increases before it get the getline_lock and execute_lock. Because when the reader see the writer_count is greater than 0, it will get the getline_lock and execute_lock. The writer also need the execute_lock, the deadlock will happen.
+
+The customer_count variable will keep track the readers and the writers when it get in the line. The program will terminate if the assert failure
